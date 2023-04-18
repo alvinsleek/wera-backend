@@ -1,0 +1,2 @@
+module OpportunityTagsHelper
+end
