@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: backend_wera_production
   username: backend_wera
   password: <%= ENV["BACKEND_WERA_DATABASE_PASSWORD"] %>
