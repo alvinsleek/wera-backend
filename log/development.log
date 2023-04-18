@@ -445,3 +445,292 @@ Processing by OpportunitiesController#index as HTML
 Completed 200 OK in 53ms (Views: 40.5ms | ActiveRecord: 8.3ms | Allocations: 21309)
 
 
+Started POST "/signup" for ::1 at 2023-04-18 22:25:02 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/signup"):
+  
+Started POST "/signup" for ::1 at 2023-04-18 22:25:37 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"full_name"=>"Mr John", "email_address"=>"dl679@ymail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_type"=>"Jobseeker", "is_admin"=>false, "user"=>{"email_address"=>"dl679@ymail.com", "is_admin"=>false, "user_type"=>"Jobseeker"}}
+[31mUnpermitted parameters: :full_name, :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f78c8aa0260>, params: {"full_name"=>"Mr John", "email_address"=>"dl679@ymail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "user_type"=>"Jobseeker", "is_admin"=>false, "controller"=>"users", "action"=>"create", "user"=>{"email_address"=>"dl679@ymail.com", "is_admin"=>false, "user_type"=>"Jobseeker"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email_address" = $1 LIMIT $2[0m  [["email_address", "dl679@ymail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email_address", "password_digest", "is_admin", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email_address", "dl679@ymail.com"], ["password_digest", "[FILTERED]"], ["is_admin", false], ["user_type", "Jobseeker"], ["created_at", "2023-04-18 19:25:37.556757"], ["updated_at", "2023-04-18 19:25:37.556757"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (25.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mProfile Create (0.5ms)[0m  [1m[32mINSERT INTO "profiles" ("user_id", "full_name", "phone_number", "date_of_birth", "skills", "biography", "resume", "profile_picture", "email_address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["user_id", 6], ["full_name", "Mr John"], ["phone_number", nil], ["date_of_birth", nil], ["skills", nil], ["biography", nil], ["resume", nil], ["profile_picture", nil], ["email_address", "dl679@ymail.com"], ["created_at", "2023-04-18 19:25:37.646153"], ["updated_at", "2023-04-18 19:25:37.646153"]]
+  ↳ app/controllers/users_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:14:in `create'
+[active_model_serializers]   [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "profile_tags" ON "tags"."id" = "profile_tags"."tag_id" WHERE "profile_tags"."profile_id" = $1[0m  [["profile_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `create'
+[active_model_serializers]   [1m[36mExperience Load (0.7ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."profile_id" = $1[0m  [["profile_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `create'
+[active_model_serializers]   [1m[36mEducation Load (0.3ms)[0m  [1m[34mSELECT "educations".* FROM "educations" WHERE "educations"."profile_id" = $1[0m  [["profile_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `create'
+[active_model_serializers]   [1m[36mApplication Load (0.4ms)[0m  [1m[34mSELECT "applications".* FROM "applications" WHERE "applications"."profile_id" = $1[0m  [["profile_id", 4]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `create'
+[active_model_serializers] Rendered ProfileSerializer with ActiveModelSerializers::Adapter::Attributes (138.25ms)
+Completed 200 OK in 614ms (Views: 172.0ms | ActiveRecord: 57.4ms | Allocations: 95419)
+
+
+Started GET "/employers" for ::1 at 2023-04-18 22:25:46 +0300
+Processing by EmployersController#index as */*
+  [1m[36mEmployer Load (0.5ms)[0m  [1m[34mSELECT "employers".* FROM "employers"[0m
+  ↳ app/controllers/employers_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mOpportunity Load (0.3ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."employer_id" = $1[0m  [["employer_id", 1]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mOpportunity Load (0.3ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."employer_id" = $1[0m  [["employer_id", 2]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mOpportunity Load (0.3ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."employer_id" = $1[0m  [["employer_id", 3]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mOpportunity Load (0.2ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."employer_id" = $1[0m  [["employer_id", 4]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mOpportunity Load (0.3ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."employer_id" = $1[0m  [["employer_id", 5]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (60.88ms)
+Completed 200 OK in 85ms (Views: 70.0ms | ActiveRecord: 10.8ms | Allocations: 58006)
+
+
+Started GET "/employers/1" for ::1 at 2023-04-18 22:26:02 +0300
+Processing by EmployersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mEmployer Load (0.4ms)[0m  [1m[34mSELECT "employers".* FROM "employers" WHERE "employers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/employers_controller.rb:12:in `show'
+[active_model_serializers]   [1m[36mOpportunity Load (1.9ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."employer_id" = $1[0m  [["employer_id", 1]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:13:in `show'
+[active_model_serializers] Rendered EmployerSerializer with ActiveModelSerializers::Adapter::Attributes (14.61ms)
+Completed 200 OK in 23ms (Views: 13.8ms | ActiveRecord: 3.3ms | Allocations: 3635)
+
+
+Started PATCH "/employers/1" for ::1 at 2023-04-18 22:26:34 +0300
+Processing by EmployersController#update as */*
+  Parameters: {"company_name"=>"Moringa School", "company_location"=>"Somewhere", "company_description"=>"Not today", "company_logo"=>"https://images.pexels.com/photos/430205/pexels-photo-430205.jpeg?auto=compress&cs=tinysrgb&w=600", "id"=>"1", "employer"=>{"company_name"=>"Moringa School", "company_location"=>"Somewhere", "company_description"=>"Not today", "company_logo"=>"https://images.pexels.com/photos/430205/pexels-photo-430205.jpeg?auto=compress&cs=tinysrgb&w=600"}}
+  [1m[36mEmployer Load (0.3ms)[0m  [1m[34mSELECT "employers".* FROM "employers" WHERE "employers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/employers_controller.rb:17:in `update'
+[31mUnpermitted parameters: :id, :employer. Context: { controller: EmployersController, action: update, request: #<ActionDispatch::Request:0x00007f78c400cf78>, params: {"company_name"=>"Moringa School", "company_location"=>"Somewhere", "company_description"=>"Not today", "company_logo"=>"https://images.pexels.com/photos/430205/pexels-photo-430205.jpeg?auto=compress&cs=tinysrgb&w=600", "controller"=>"employers", "action"=>"update", "id"=>"1", "employer"=>{"company_name"=>"Moringa School", "company_location"=>"Somewhere", "company_description"=>"Not today", "company_logo"=>"https://images.pexels.com/photos/430205/pexels-photo-430205.jpeg?auto=compress&cs=tinysrgb&w=600"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/employers_controller.rb:18:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/employers_controller.rb:18:in `update'
+  [1m[36mEmployer Update (0.5ms)[0m  [1m[33mUPDATE "employers" SET "company_name" = $1, "company_location" = $2, "company_description" = $3, "company_logo" = $4, "updated_at" = $5 WHERE "employers"."id" = $6[0m  [["company_name", "Moringa School"], ["company_location", "Somewhere"], ["company_description", "Not today"], ["company_logo", "https://images.pexels.com/photos/430205/pexels-photo-430205.jpeg?auto=compress&cs=tinysrgb&w=600"], ["updated_at", "2023-04-18 19:26:34.311638"], ["id", 1]]
+  ↳ app/controllers/employers_controller.rb:18:in `update'
+  [1m[36mTRANSACTION (22.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/employers_controller.rb:18:in `update'
+[active_model_serializers]   [1m[36mOpportunity Load (0.3ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."employer_id" = $1[0m  [["employer_id", 1]]
+[active_model_serializers]   ↳ app/controllers/employers_controller.rb:19:in `update'
+[active_model_serializers] Rendered EmployerSerializer with ActiveModelSerializers::Adapter::Attributes (3.31ms)
+Completed 200 OK in 36ms (Views: 3.6ms | ActiveRecord: 23.6ms | Allocations: 5163)
+
+
+Started GET "/profiles" for ::1 at 2023-04-18 22:26:49 +0300
+Processing by ProfilesController#index as */*
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+  ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "profile_tags" ON "tags"."id" = "profile_tags"."tag_id" WHERE "profile_tags"."profile_id" = $1[0m  [["profile_id", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."profile_id" = $1[0m  [["profile_id", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mEducation Load (0.3ms)[0m  [1m[34mSELECT "educations".* FROM "educations" WHERE "educations"."profile_id" = $1[0m  [["profile_id", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mApplication Load (0.3ms)[0m  [1m[34mSELECT "applications".* FROM "applications" WHERE "applications"."profile_id" = $1[0m  [["profile_id", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "profile_tags" ON "tags"."id" = "profile_tags"."tag_id" WHERE "profile_tags"."profile_id" = $1[0m  [["profile_id", 2]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mExperience Load (0.5ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."profile_id" = $1[0m  [["profile_id", 2]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mEducation Load (0.3ms)[0m  [1m[34mSELECT "educations".* FROM "educations" WHERE "educations"."profile_id" = $1[0m  [["profile_id", 2]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mApplication Load (0.3ms)[0m  [1m[34mSELECT "applications".* FROM "applications" WHERE "applications"."profile_id" = $1[0m  [["profile_id", 2]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "profile_tags" ON "tags"."id" = "profile_tags"."tag_id" WHERE "profile_tags"."profile_id" = $1[0m  [["profile_id", 3]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."profile_id" = $1[0m  [["profile_id", 3]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mEducation Load (0.5ms)[0m  [1m[34mSELECT "educations".* FROM "educations" WHERE "educations"."profile_id" = $1[0m  [["profile_id", 3]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mApplication Load (0.3ms)[0m  [1m[34mSELECT "applications".* FROM "applications" WHERE "applications"."profile_id" = $1[0m  [["profile_id", 3]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "profile_tags" ON "tags"."id" = "profile_tags"."tag_id" WHERE "profile_tags"."profile_id" = $1[0m  [["profile_id", 4]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."profile_id" = $1[0m  [["profile_id", 4]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mEducation Load (0.3ms)[0m  [1m[34mSELECT "educations".* FROM "educations" WHERE "educations"."profile_id" = $1[0m  [["profile_id", 4]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mApplication Load (0.3ms)[0m  [1m[34mSELECT "applications".* FROM "applications" WHERE "applications"."profile_id" = $1[0m  [["profile_id", 4]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (111.01ms)
+Completed 200 OK in 115ms (Views: 100.8ms | ActiveRecord: 13.0ms | Allocations: 85687)
+
+
+Started GET "/profiles/1" for ::1 at 2023-04-18 22:27:35 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProfilesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mProfile Load (0.5ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:11:in `show'
+[active_model_serializers]   [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "profile_tags" ON "tags"."id" = "profile_tags"."tag_id" WHERE "profile_tags"."profile_id" = $1[0m  [["profile_id", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mOpportunity Load (0.5ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" INNER JOIN "opportunity_tags" ON "opportunities"."id" = "opportunity_tags"."opportunity_id" WHERE "opportunity_tags"."tag_id" = $1[0m  [["tag_id", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mOpportunity Load (0.4ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" INNER JOIN "opportunity_tags" ON "opportunities"."id" = "opportunity_tags"."opportunity_id" WHERE "opportunity_tags"."tag_id" = $1[0m  [["tag_id", 5]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mApplication Load (0.3ms)[0m  [1m[34mSELECT "applications".* FROM "applications" WHERE "applications"."profile_id" = $1[0m  [["profile_id", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mOpportunity Load (0.2ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mOpportunity Load (0.3ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mCACHE Opportunity Load (0.0ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:13:in `show'
+[active_model_serializers] Rendered ProfileSerializer with ActiveModelSerializers::Adapter::Attributes (181.77ms)
+Completed 200 OK in 244ms (Views: 176.3ms | ActiveRecord: 20.2ms | Allocations: 126711)
+
+
+Started PATCH "/profiles/1" for ::1 at 2023-04-18 22:27:44 +0300
+Processing by ProfilesController#update as */*
+  Parameters: {"full_name"=>"Mr Dolittle", "phone_number"=>"254705673490", "date_of_birth"=>"5-10-2002", "skills"=>"Js, Ruby", "biography"=>"A rather long one", "resume"=>nil, "profile_picture"=>"https://images.pexels.com/photos/3454298/pexels-photo-3454298.jpeg?auto=compress&cs=tinysrgb&w=600", "id"=>"1", "profile"=>{"full_name"=>"Mr Dolittle", "phone_number"=>"254705673490", "date_of_birth"=>"5-10-2002", "skills"=>"Js, Ruby", "biography"=>"A rather long one", "resume"=>nil, "profile_picture"=>"https://images.pexels.com/photos/3454298/pexels-photo-3454298.jpeg?auto=compress&cs=tinysrgb&w=600"}}
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:17:in `update'
+[31mUnpermitted parameters: :id, :profile. Context: { controller: ProfilesController, action: update, request: #<ActionDispatch::Request:0x00007f78c800a6c0>, params: {"full_name"=>"Mr Dolittle", "phone_number"=>"254705673490", "date_of_birth"=>"5-10-2002", "skills"=>"Js, Ruby", "biography"=>"A rather long one", "resume"=>nil, "profile_picture"=>"https://images.pexels.com/photos/3454298/pexels-photo-3454298.jpeg?auto=compress&cs=tinysrgb&w=600", "controller"=>"profiles", "action"=>"update", "id"=>"1", "profile"=>{"full_name"=>"Mr Dolittle", "phone_number"=>"254705673490", "date_of_birth"=>"5-10-2002", "skills"=>"Js, Ruby", "biography"=>"A rather long one", "resume"=>nil, "profile_picture"=>"https://images.pexels.com/photos/3454298/pexels-photo-3454298.jpeg?auto=compress&cs=tinysrgb&w=600"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/profiles_controller.rb:18:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:18:in `update'
+  [1m[36mProfile Update (0.8ms)[0m  [1m[33mUPDATE "profiles" SET "full_name" = $1, "phone_number" = $2, "date_of_birth" = $3, "skills" = $4, "biography" = $5, "resume" = $6, "profile_picture" = $7, "updated_at" = $8 WHERE "profiles"."id" = $9[0m  [["full_name", "Mr Dolittle"], ["phone_number", "254705673490"], ["date_of_birth", "2002-10-05 00:00:00"], ["skills", "Js, Ruby"], ["biography", "A rather long one"], ["resume", nil], ["profile_picture", "https://images.pexels.com/photos/3454298/pexels-photo-3454298.jpeg?auto=compress&cs=tinysrgb&w=600"], ["updated_at", "2023-04-18 19:27:44.064248"], ["id", 1]]
+  ↳ app/controllers/profiles_controller.rb:18:in `update'
+  [1m[36mTRANSACTION (24.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/profiles_controller.rb:18:in `update'
+[active_model_serializers]   [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "profile_tags" ON "tags"."id" = "profile_tags"."tag_id" WHERE "profile_tags"."profile_id" = $1[0m  [["profile_id", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:19:in `update'
+[active_model_serializers]   [1m[36mExperience Load (0.4ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."profile_id" = $1[0m  [["profile_id", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:19:in `update'
+[active_model_serializers]   [1m[36mEducation Load (0.3ms)[0m  [1m[34mSELECT "educations".* FROM "educations" WHERE "educations"."profile_id" = $1[0m  [["profile_id", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:19:in `update'
+[active_model_serializers]   [1m[36mApplication Load (0.3ms)[0m  [1m[34mSELECT "applications".* FROM "applications" WHERE "applications"."profile_id" = $1[0m  [["profile_id", 1]]
+[active_model_serializers]   ↳ app/controllers/profiles_controller.rb:19:in `update'
+[active_model_serializers] Rendered ProfileSerializer with ActiveModelSerializers::Adapter::Attributes (59.68ms)
+Completed 200 OK in 115ms (Views: 51.2ms | ActiveRecord: 39.6ms | Allocations: 64616)
+
+
+Started POST "/login" for ::1 at 2023-04-18 22:27:52 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"email_address"=>"dl679@ymail.com", "password"=>"[FILTERED]", "user_type"=>"Jobseeker", "session"=>{"email_address"=>"dl679@ymail.com", "password"=>"[FILTERED]", "user_type"=>"Jobseeker"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = $1 LIMIT $2[0m  [["email_address", "dl679@ymail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:23:in `create'
+[active_model_serializers]   [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "profile_tags" ON "tags"."id" = "profile_tags"."tag_id" WHERE "profile_tags"."profile_id" = $1[0m  [["profile_id", 4]]
+[active_model_serializers]   ↳ app/controllers/sessions_controller.rb:25:in `create'
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/sessions_controller.rb:25:in `create'
+[active_model_serializers]   [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."profile_id" = $1[0m  [["profile_id", 4]]
+[active_model_serializers]   ↳ app/controllers/sessions_controller.rb:25:in `create'
+[active_model_serializers]   [1m[36mEducation Load (0.3ms)[0m  [1m[34mSELECT "educations".* FROM "educations" WHERE "educations"."profile_id" = $1[0m  [["profile_id", 4]]
+[active_model_serializers]   ↳ app/controllers/sessions_controller.rb:25:in `create'
+[active_model_serializers]   [1m[36mApplication Load (0.4ms)[0m  [1m[34mSELECT "applications".* FROM "applications" WHERE "applications"."profile_id" = $1[0m  [["profile_id", 4]]
+[active_model_serializers]   ↳ app/controllers/sessions_controller.rb:25:in `create'
+[active_model_serializers] Rendered ProfileSerializer with ActiveModelSerializers::Adapter::Attributes (12.67ms)
+Completed 200 OK in 313ms (Views: 11.6ms | ActiveRecord: 2.2ms | Allocations: 6803)
+
+
+Started POST "/login" for ::1 at 2023-04-18 22:27:57 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"email_address"=>"weraboss@ymail.com", "password"=>"[FILTERED]", "user_type"=>"Admin", "session"=>{"email_address"=>"weraboss@ymail.com", "password"=>"[FILTERED]", "user_type"=>"Admin"}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email_address" = $1 LIMIT $2[0m  [["email_address", "weraboss@ymail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+Completed 200 OK in 315ms (Views: 0.8ms | ActiveRecord: 1.7ms | Allocations: 1775)
+
+
+Started GET "/opportunities" for ::1 at 2023-04-18 22:28:01 +0300
+Processing by OpportunitiesController#index as */*
+  [1m[36mOpportunity Load (0.2ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities"[0m
+  ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "opportunity_tags" ON "tags"."id" = "opportunity_tags"."tag_id" WHERE "opportunity_tags"."opportunity_id" = $1[0m  [["opportunity_id", 1]]
+[active_model_serializers]   ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mEmployer Load (0.4ms)[0m  [1m[34mSELECT "employers".* FROM "employers" WHERE "employers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mApplication Load (0.3ms)[0m  [1m[34mSELECT "applications".* FROM "applications" WHERE "applications"."opportunity_id" = $1[0m  [["opportunity_id", 1]]
+[active_model_serializers]   ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "opportunity_tags" ON "tags"."id" = "opportunity_tags"."tag_id" WHERE "opportunity_tags"."opportunity_id" = $1[0m  [["opportunity_id", 2]]
+[active_model_serializers]   ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mEmployer Load (0.3ms)[0m  [1m[34mSELECT "employers".* FROM "employers" WHERE "employers"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mApplication Load (0.3ms)[0m  [1m[34mSELECT "applications".* FROM "applications" WHERE "applications"."opportunity_id" = $1[0m  [["opportunity_id", 2]]
+[active_model_serializers]   ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "opportunity_tags" ON "tags"."id" = "opportunity_tags"."tag_id" WHERE "opportunity_tags"."opportunity_id" = $1[0m  [["opportunity_id", 3]]
+[active_model_serializers]   ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mCACHE Employer Load (0.0ms)[0m  [1m[34mSELECT "employers".* FROM "employers" WHERE "employers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mApplication Load (0.2ms)[0m  [1m[34mSELECT "applications".* FROM "applications" WHERE "applications"."opportunity_id" = $1[0m  [["opportunity_id", 3]]
+[active_model_serializers]   ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "opportunity_tags" ON "tags"."id" = "opportunity_tags"."tag_id" WHERE "opportunity_tags"."opportunity_id" = $1[0m  [["opportunity_id", 4]]
+[active_model_serializers]   ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mCACHE Employer Load (0.0ms)[0m  [1m[34mSELECT "employers".* FROM "employers" WHERE "employers"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mApplication Load (0.3ms)[0m  [1m[34mSELECT "applications".* FROM "applications" WHERE "applications"."opportunity_id" = $1[0m  [["opportunity_id", 4]]
+[active_model_serializers]   ↳ app/controllers/opportunities_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (63.2ms)
+Completed 200 OK in 67ms (Views: 58.1ms | ActiveRecord: 8.0ms | Allocations: 40125)
+
+
+Started GET "/applications" for ::1 at 2023-04-18 22:28:06 +0300
+Processing by ApplicationsController#index as */*
+  [1m[36mApplication Load (0.3ms)[0m  [1m[34mSELECT "applications".* FROM "applications"[0m
+  ↳ app/controllers/applications_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mOpportunity Load (0.3ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/applications_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/applications_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mOpportunity Load (0.3ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/applications_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mCACHE Profile Load (0.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/applications_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mCACHE Opportunity Load (0.1ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/applications_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mCACHE Profile Load (0.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/applications_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mOpportunity Load (0.3ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/applications_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/applications_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mOpportunity Load (0.3ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities" WHERE "opportunities"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/applications_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mCACHE Profile Load (0.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/applications_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (28.12ms)
+Completed 200 OK in 31ms (Views: 28.5ms | ActiveRecord: 2.3ms | Allocations: 13103)
+
+

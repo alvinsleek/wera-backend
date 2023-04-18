@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
-  resources :profile_tags
-  resources :tags
-  resources :opportunity_tags
-  resources :applications
-  resources :experiences
-  resources :educations
-  resources :opportunities
-  resources :profiles
-  resources :employers
-  resources :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  
+resources :profiles, only: [:show] do
+    resources :educations, only: [:create, :update, :destroy]
+    resources :experiences, only: [:create, :update, :destroy]
+  end
+  resources :profiles, only: [:show, :index, :update, :destroy]
+  resources :employers, only: [:index, :update, :show, :destroy]
+  resources :opportunities, only: [:show, :create, :index]
+  resources :tags, only: [:create]
+  resources :applications, only: [:index,:create]
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  post "/login", to: "sessions#create"
+  post "/signup", to: "users#create"
 end
