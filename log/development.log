@@ -429,3 +429,19 @@ Migrating to CreateProfileTags (20230418190820)
   [1m[36mProfileTag Create (0.7ms)[0m  [1m[32mINSERT INTO "profile_tags" ("profile_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["profile_id", 2], ["tag_id", 2], ["created_at", "2023-04-18 19:10:35.232318"], ["updated_at", "2023-04-18 19:10:35.232318"]]
   [1m[36mTRANSACTION (12.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mOpportunity Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "opportunities"[0m
+Started GET "/" for ::1 at 2023-04-18 22:13:16 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ella/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ella/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.0ms | Allocations: 660)
+Completed 200 OK in 13ms (Views: 4.6ms | ActiveRecord: 0.0ms | Allocations: 5545)
+
+
+Started GET "/opportunities" for ::1 at 2023-04-18 22:13:29 +0300
+Processing by OpportunitiesController#index as HTML
+  [1m[36mOpportunity Load (0.6ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities"[0m
+  ↳ app/controllers/opportunities_controller.rb:3:in `index'
+Completed 200 OK in 53ms (Views: 40.5ms | ActiveRecord: 8.3ms | Allocations: 21309)
+
+
