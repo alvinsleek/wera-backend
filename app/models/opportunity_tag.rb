@@ -1,0 +1,2 @@
+class OpportunityTag < ApplicationRecord
+end

@@ -99,3 +99,349 @@ Processing by MoviesController#index as HTML
 Completed 200 OK in 22ms (Views: 15.4ms | ActiveRecord: 4.6ms | Allocations: 16300)
 
 
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4882129947643826850)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMovies (20230418182224)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mDROP TABLE "movies"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.7ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230418182224"]]
+  [1m[36mTRANSACTION (25.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4882129947643826850)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4882129947643826850)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTags (20230417095146)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (111.8ms)[0m  [1m[35mCREATE TABLE "tags" ("id" bigserial primary key, "name" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230417095146"]]
+  [1m[36mTRANSACTION (20.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOpportunityTags (20230417095439)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (49.6ms)[0m  [1m[35mCREATE TABLE "opportunity_tags" ("id" bigserial primary key, "tag_id" integer, "opportunity_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230417095439"]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProfileTags (20230417095536)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (62.0ms)[0m  [1m[35mCREATE TABLE "profile_tags" ("id" bigserial primary key, "tag_id" integer, "profile_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230417095536"]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEmployers (20230417095706)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (85.1ms)[0m  [1m[35mCREATE TABLE "employers" ("id" bigserial primary key, "full_name" character varying, "company_name" character varying, "email_address" character varying, "company_location" character varying, "user_id" integer, "company_description" character varying, "company_logo" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230417095706"]]
+  [1m[36mTRANSACTION (18.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEducations (20230417095719)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (76.4ms)[0m  [1m[35mCREATE TABLE "educations" ("id" bigserial primary key, "year_of_admission" character varying, "year_of_completion" character varying, "institution" character varying, "qualification" character varying, "profile_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230417095719"]]
+  [1m[36mTRANSACTION (28.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUsers (20230417095937)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (76.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email_address" character varying, "password_digest" character varying, "is_admin" boolean, "user_type" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230417095937"]]
+  [1m[36mTRANSACTION (16.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProfiles (20230417095959)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (77.5ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" bigserial primary key, "user_id" integer, "full_name" character varying, "phone_number" character varying, "date_of_birth" timestamp(6), "skills" character varying, "biography" character varying, "resume" character varying, "profile_picture" character varying, "email_address" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230417095959"]]
+  [1m[36mTRANSACTION (15.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateApplications (20230417100015)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (44.6ms)[0m  [1m[35mCREATE TABLE "applications" ("id" bigserial primary key, "opportunity_id" integer, "profile_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230417100015"]]
+  [1m[36mTRANSACTION (14.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateExperiences (20230417100029)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (67.8ms)[0m  [1m[35mCREATE TABLE "experiences" ("id" bigserial primary key, "year" character varying, "company" character varying, "job_description" character varying, "profile_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230417100029"]]
+  [1m[36mTRANSACTION (13.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOpportunities (20230417100052)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (101.7ms)[0m  [1m[35mCREATE TABLE "opportunities" ("id" bigserial primary key, "employer_id" integer, "description" character varying, "cut_off" integer, "job_type" character varying, "qualifications" character varying, "estimated_salary" character varying, "responsibilities" character varying, "application_deadline" timestamp(6), "title" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230417100052"]]
+  [1m[36mTRANSACTION (11.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4882129947643826850)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4882129947643826850)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateOpportunities (20230417100052)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mDROP TABLE "opportunities"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.7ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230417100052"]]
+  [1m[36mTRANSACTION (47.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateExperiences (20230417100029)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "experiences"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230417100029"]]
+  [1m[36mTRANSACTION (24.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateApplications (20230417100015)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "applications"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230417100015"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProfiles (20230417095959)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE "profiles"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230417095959"]]
+  [1m[36mTRANSACTION (13.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUsers (20230417095937)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230417095937"]]
+  [1m[36mTRANSACTION (13.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEducations (20230417095719)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "educations"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230417095719"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEmployers (20230417095706)
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE "employers"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230417095706"]]
+  [1m[36mTRANSACTION (12.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProfileTags (20230417095536)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "profile_tags"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230417095536"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOpportunityTags (20230417095439)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "opportunity_tags"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230417095439"]]
+  [1m[36mTRANSACTION (14.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTags (20230417095146)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "tags"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230417095146"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4882129947643826850)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4882129947643826850)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230418185814)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (113.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email_address" character varying, "password_digest" character varying, "is_admin" boolean, "user_type" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230418185814"]]
+  [1m[36mTRANSACTION (22.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEmployers (20230418185932)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (96.4ms)[0m  [1m[35mCREATE TABLE "employers" ("id" bigserial primary key, "full_name" character varying, "company_name" character varying, "company_location" character varying, "user_id" integer, "company_description" character varying, "email_address" character varying, "company_logo" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230418185932"]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProfiles (20230418190105)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (82.4ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" bigserial primary key, "user_id" integer, "full_name" character varying, "phone_number" character varying, "date_of_birth" timestamp(6), "skills" character varying, "biography" character varying, "resume" character varying, "profile_picture" character varying, "email_address" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230418190105"]]
+  [1m[36mTRANSACTION (20.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOpportunities (20230418190240)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (107.7ms)[0m  [1m[35mCREATE TABLE "opportunities" ("id" bigserial primary key, "employer_id" integer, "description" character varying, "cut_off" integer, "job_type" character varying, "qualifications" character varying, "estimated_salary" character varying, "responsibilities" character varying, "application_deadline" timestamp(6), "title" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230418190240"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEducations (20230418190318)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (73.2ms)[0m  [1m[35mCREATE TABLE "educations" ("id" bigserial primary key, "year_of_admission" character varying, "year_of_completion" character varying, "institution" character varying, "qualification" character varying, "profile_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230418190318"]]
+  [1m[36mTRANSACTION (17.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateExperiences (20230418190409)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (74.7ms)[0m  [1m[35mCREATE TABLE "experiences" ("id" bigserial primary key, "year" character varying, "company" character varying, "job_description" character varying, "profile_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230418190409"]]
+  [1m[36mTRANSACTION (17.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateApplications (20230418190459)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (52.7ms)[0m  [1m[35mCREATE TABLE "applications" ("id" bigserial primary key, "opportunity_id" integer, "profile_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230418190459"]]
+  [1m[36mTRANSACTION (16.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOpportunityTags (20230418190626)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (42.6ms)[0m  [1m[35mCREATE TABLE "opportunity_tags" ("id" bigserial primary key, "opportunity_id" integer, "tag_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230418190626"]]
+  [1m[36mTRANSACTION (16.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTags (20230418190705)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (118.2ms)[0m  [1m[35mCREATE TABLE "tags" ("id" bigserial primary key, "name" character varying, "slug" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230418190705"]]
+  [1m[36mTRANSACTION (162.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProfileTags (20230418190820)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (63.0ms)[0m  [1m[35mCREATE TABLE "profile_tags" ("id" bigserial primary key, "profile_id" integer, "tag_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230418190820"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4882129947643826850)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email_address", "password_digest", "is_admin", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email_address", "weraboss@ymail.com"], ["password_digest", "[FILTERED]"], ["is_admin", true], ["user_type", "Admin"], ["created_at", "2023-04-18 19:10:32.729981"], ["updated_at", "2023-04-18 19:10:32.729981"]]
+  [1m[36mTRANSACTION (32.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email_address", "password_digest", "is_admin", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email_address", "ndungujeff@yahoo.com"], ["password_digest", "[FILTERED]"], ["is_admin", false], ["user_type", "Jobseeker"], ["created_at", "2023-04-18 19:10:33.052761"], ["updated_at", "2023-04-18 19:10:33.052761"]]
+  [1m[36mTRANSACTION (32.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email_address", "password_digest", "is_admin", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email_address", "citizenlive@yahoo.com"], ["password_digest", "[FILTERED]"], ["is_admin", false], ["user_type", "Jobseeker"], ["created_at", "2023-04-18 19:10:33.371455"], ["updated_at", "2023-04-18 19:10:33.371455"]]
+  [1m[36mTRANSACTION (24.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email_address", "password_digest", "is_admin", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email_address", "ntvkenya@gmail.com"], ["password_digest", "[FILTERED]"], ["is_admin", false], ["user_type", "Employer"], ["created_at", "2023-04-18 19:10:33.682306"], ["updated_at", "2023-04-18 19:10:33.682306"]]
+  [1m[36mTRANSACTION (24.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email_address", "password_digest", "is_admin", "user_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email_address", "ktnnews@yahoo.com"], ["password_digest", "[FILTERED]"], ["is_admin", false], ["user_type", "Employer"], ["created_at", "2023-04-18 19:10:33.991933"], ["updated_at", "2023-04-18 19:10:33.991933"]]
+  [1m[36mTRANSACTION (25.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEmployer Create (0.9ms)[0m  [1m[32mINSERT INTO "employers" ("full_name", "company_name", "company_location", "user_id", "company_description", "email_address", "company_logo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["full_name", "Moringa School"], ["company_name", "Moringa Bootcamp"], ["company_location", "Nairobi"], ["user_id", 1], ["company_description", "A tech company thats gives young people a place to learn coding"], ["email_address", "moringa@bootcamp.com"], ["company_logo", nil], ["created_at", "2023-04-18 19:10:34.051931"], ["updated_at", "2023-04-18 19:10:34.051931"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEmployer Create (0.4ms)[0m  [1m[32mINSERT INTO "employers" ("full_name", "company_name", "company_location", "user_id", "company_description", "email_address", "company_logo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["full_name", "Safaricom"], ["company_name", "Telecommunications"], ["company_location", "Thika"], ["user_id", 2], ["company_description", "Telecommunication company that offers international communication"], ["email_address", "safaricomkenya@yahoo.com"], ["company_logo", nil], ["created_at", "2023-04-18 19:10:34.065786"], ["updated_at", "2023-04-18 19:10:34.065786"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEmployer Create (0.5ms)[0m  [1m[32mINSERT INTO "employers" ("full_name", "company_name", "company_location", "user_id", "company_description", "email_address", "company_logo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["full_name", "Spotify"], ["company_name", "Rhytmic Sounds"], ["company_location", "Kakamega"], ["user_id", 3], ["company_description", "We offer the best music available in the world"], ["email_address", "rhytmicmusic@gmail.com"], ["company_logo", nil], ["created_at", "2023-04-18 19:10:34.076998"], ["updated_at", "2023-04-18 19:10:34.076998"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEmployer Create (0.5ms)[0m  [1m[32mINSERT INTO "employers" ("full_name", "company_name", "company_location", "user_id", "company_description", "email_address", "company_logo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["full_name", "Microsoft"], ["company_name", "Bill Gates Foundations"], ["company_location", "Nakuru"], ["user_id", 4], ["company_description", "Offers tech surveys for companies"], ["email_address", "microsoftgates@gmail.com"], ["company_logo", nil], ["created_at", "2023-04-18 19:10:34.088099"], ["updated_at", "2023-04-18 19:10:34.088099"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEmployer Create (0.5ms)[0m  [1m[32mINSERT INTO "employers" ("full_name", "company_name", "company_location", "user_id", "company_description", "email_address", "company_logo", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["full_name", "Twiga Foods"], ["company_name", "Bwibo Foods"], ["company_location", "Kenol"], ["user_id", 5], ["company_description", "We offer fresh farm products"], ["email_address", "twigafoods@gmail.com"], ["company_logo", nil], ["created_at", "2023-04-18 19:10:34.099224"], ["updated_at", "2023-04-18 19:10:34.099224"]]
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Create (1.0ms)[0m  [1m[32mINSERT INTO "profiles" ("user_id", "full_name", "phone_number", "date_of_birth", "skills", "biography", "resume", "profile_picture", "email_address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["user_id", 1], ["full_name", "Jeff Ndungu"], ["phone_number", "079865231"], ["date_of_birth", "1990-01-01 00:00:00"], ["skills", "Ruby on Rails, JavaScript, React"], ["biography", "I am a full stack developer with 5 years of experience."], ["resume", "https://example.com/john_doe_resume.pdf"], ["profile_picture", nil], ["email_address", nil], ["created_at", "2023-04-18 19:10:34.139742"], ["updated_at", "2023-04-18 19:10:34.139742"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Create (0.6ms)[0m  [1m[32mINSERT INTO "profiles" ("user_id", "full_name", "phone_number", "date_of_birth", "skills", "biography", "resume", "profile_picture", "email_address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["user_id", 2], ["full_name", "Ndungu Jeff"], ["phone_number", "0762727181"], ["date_of_birth", "1995-05-05 00:00:00"], ["skills", "Python, Django, SQL"], ["biography", "I am a software engineer who loves building scalable web applications."], ["resume", "https://example.com/jane_smith_resume.pdf"], ["profile_picture", nil], ["email_address", nil], ["created_at", "2023-04-18 19:10:34.154949"], ["updated_at", "2023-04-18 19:10:34.154949"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Create (0.7ms)[0m  [1m[32mINSERT INTO "profiles" ("user_id", "full_name", "phone_number", "date_of_birth", "skills", "biography", "resume", "profile_picture", "email_address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["user_id", 3], ["full_name", "Bob Kamau"], ["phone_number", "345-678-9012"], ["date_of_birth", "1992-12-31 00:00:00"], ["skills", "Java, Spring Boot, Angular"], ["biography", "I am a passionate developer with experience in both front-end and back-end development."], ["resume", "https://example.com/bob_johnson_resume.pdf"], ["profile_picture", nil], ["email_address", nil], ["created_at", "2023-04-18 19:10:34.166571"], ["updated_at", "2023-04-18 19:10:34.166571"]]
+  [1m[36mTRANSACTION (14.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mExperience Create (1.0ms)[0m  [1m[32mINSERT INTO "experiences" ("year", "company", "job_description", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["year", "2015"], ["company", "Sleek Solutions"], ["job_description", "Developing front end website architecture"], ["profile_id", 1], ["created_at", "2023-04-18 19:10:34.218155"], ["updated_at", "2023-04-18 19:10:34.218155"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mExperience Create (0.6ms)[0m  [1m[32mINSERT INTO "experiences" ("year", "company", "job_description", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["year", "2017"], ["company", "Bidco Africa Ltd"], ["job_description", "Designing user interactions on web pages."], ["profile_id", 2], ["created_at", "2023-04-18 19:10:34.232857"], ["updated_at", "2023-04-18 19:10:34.232857"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mExperience Create (0.6ms)[0m  [1m[32mINSERT INTO "experiences" ("year", "company", "job_description", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["year", "2018"], ["company", "Deloitte Group"], ["job_description", "Developing back end website applications."], ["profile_id", 1], ["created_at", "2023-04-18 19:10:34.243774"], ["updated_at", "2023-04-18 19:10:34.243774"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mExperience Create (0.7ms)[0m  [1m[32mINSERT INTO "experiences" ("year", "company", "job_description", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["year", "2020"], ["company", "East Afrcian Breweries Limited"], ["job_description", "Creating servers and databases for functionality."], ["profile_id", 2], ["created_at", "2023-04-18 19:10:34.255470"], ["updated_at", "2023-04-18 19:10:34.255470"]]
+  [1m[36mTRANSACTION (13.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mExperience Create (0.8ms)[0m  [1m[32mINSERT INTO "experiences" ("year", "company", "job_description", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["year", "2022"], ["company", "Safaricom PLC"], ["job_description", "Working alongside graphic designers for web design features."], ["profile_id", 1], ["created_at", "2023-04-18 19:10:34.277688"], ["updated_at", "2023-04-18 19:10:34.277688"]]
+  [1m[36mTRANSACTION (12.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEducation Create (1.3ms)[0m  [1m[32mINSERT INTO "educations" ("year_of_admission", "year_of_completion", "institution", "qualification", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["year_of_admission", "2008"], ["year_of_completion", "2015"], ["institution", "Mustard Seed Schools"], ["qualification", "Primagry Diploma"], ["profile_id", 1], ["created_at", "2023-04-18 19:10:34.338107"], ["updated_at", "2023-04-18 19:10:34.338107"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEducation Create (0.7ms)[0m  [1m[32mINSERT INTO "educations" ("year_of_admission", "year_of_completion", "institution", "qualification", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["year_of_admission", "2016"], ["year_of_completion", "2019"], ["institution", "Kagumo High School"], ["qualification", "High School Diploma"], ["profile_id", 2], ["created_at", "2023-04-18 19:10:34.355235"], ["updated_at", "2023-04-18 19:10:34.355235"]]
+  [1m[36mTRANSACTION (13.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEducation Create (0.7ms)[0m  [1m[32mINSERT INTO "educations" ("year_of_admission", "year_of_completion", "institution", "qualification", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["year_of_admission", "2020"], ["year_of_completion", "2020"], ["institution", "ICS College"], ["qualification", "Computer Packages Certificate"], ["profile_id", 1], ["created_at", "2023-04-18 19:10:34.377591"], ["updated_at", "2023-04-18 19:10:34.377591"]]
+  [1m[36mTRANSACTION (13.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEducation Create (0.7ms)[0m  [1m[32mINSERT INTO "educations" ("year_of_admission", "year_of_completion", "institution", "qualification", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["year_of_admission", "2020"], ["year_of_completion", "present"], ["institution", "Jomo Kenyatta University of Agriculture and Technology"], ["qualification", "Bachelor's Degree"], ["profile_id", 2], ["created_at", "2023-04-18 19:10:34.399698"], ["updated_at", "2023-04-18 19:10:34.399698"]]
+  [1m[36mTRANSACTION (13.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEducation Create (0.7ms)[0m  [1m[32mINSERT INTO "educations" ("year_of_admission", "year_of_completion", "institution", "qualification", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["year_of_admission", "2022"], ["year_of_completion", "present"], ["institution", "Moringa School"], ["qualification", "Certification"], ["profile_id", 2], ["created_at", "2023-04-18 19:10:34.421978"], ["updated_at", "2023-04-18 19:10:34.421978"]]
+  [1m[36mTRANSACTION (13.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOpportunity Create (1.5ms)[0m  [1m[32mINSERT INTO "opportunities" ("employer_id", "description", "cut_off", "job_type", "qualifications", "estimated_salary", "responsibilities", "application_deadline", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["employer_id", 1], ["description", "We are looking for a Back-End Engineer to design and develop our SaaS platform that enables researchers to manage their experiments, run machine learning models, evaluate their performance,\n        and explore the rich sets of biological data. In this role, you will build maintainable and performant APIs and data pipelines to enrich and interact with data from over half a billion cells. You will work in an interdisciplinary team composed of data scientists, bioinformaticians, biologists, and software engineers to help solve hard problems that improve biological research and ultimately, health outcomes, across all of biology."], ["cut_off", 7], ["job_type", "Full-time"], ["qualifications", "Bachelor's degree in Computer Science or equivalent"], ["estimated_salary", "$100,000 - $120,000"], ["responsibilities", "Design, develop, and maintain software applications"], ["application_deadline", "2023-04-17 23:59:59"], ["title", "Back End engineer"], ["created_at", "2023-04-18 19:10:34.512230"], ["updated_at", "2023-04-18 19:10:34.512230"]]
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOpportunity Create (0.8ms)[0m  [1m[32mINSERT INTO "opportunities" ("employer_id", "description", "cut_off", "job_type", "qualifications", "estimated_salary", "responsibilities", "application_deadline", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["employer_id", 2], ["description", " We are seeking a dynamic and experienced Finance Manager to join our team and play a crucial role in managing our financial operations and driving the company's financial performance."], ["cut_off", 20], ["job_type", "Full-time"], ["qualifications", "Bachelor's degree in Computer Science or equivalent"], ["estimated_salary", "$100,000 - $120,000"], ["responsibilities", "Design, develop, and maintain software applications"], ["application_deadline", "2023-04-17 23:59:59"], ["title", "Finance Manager"], ["created_at", "2023-04-18 19:10:34.533961"], ["updated_at", "2023-04-18 19:10:34.533961"]]
+  [1m[36mTRANSACTION (10.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOpportunity Create (0.8ms)[0m  [1m[32mINSERT INTO "opportunities" ("employer_id", "description", "cut_off", "job_type", "qualifications", "estimated_salary", "responsibilities", "application_deadline", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["employer_id", 1], ["description", "The UI/UX Designer will be responsible for creating visually appealing and user-friendly interfaces for our digital products and services, with a focus on delivering exceptional user experiences. The successful candidate will work closely with cross-functional teams, including product managers, developers, and other stakeholders, to understand user requirements, conduct user research, design wireframes and prototypes, and implement intuitive and engaging user interfaces."], ["cut_off", 5], ["job_type", "Full-time"], ["qualifications", "Bachelor's degree in Computer Science or equivalent"], ["estimated_salary", "$100,000 - $120,000"], ["responsibilities", "Design, develop, and maintain software applications"], ["application_deadline", "2023-04-17 23:59:59"], ["title", "UI/UX Designer"], ["created_at", "2023-04-18 19:10:34.555611"], ["updated_at", "2023-04-18 19:10:34.555611"]]
+  [1m[36mTRANSACTION (11.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOpportunity Create (0.7ms)[0m  [1m[32mINSERT INTO "opportunities" ("employer_id", "description", "cut_off", "job_type", "qualifications", "estimated_salary", "responsibilities", "application_deadline", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["employer_id", 2], ["description", "The successful candidate will work closely with cross-functional teams, including product managers, developers, and other stakeholders, to understand user requirements, conduct user research, design wireframes and prototypes, and implement intuitive and engaging user interfaces."], ["cut_off", 3], ["job_type", "Full-time"], ["qualifications", "Bachelor's degree in Computer Science or equivalent"], ["estimated_salary", "$100,000 - $120,000"], ["responsibilities", "Design, develop, and maintain software applications"], ["application_deadline", "2023-04-17 23:59:59"], ["title", "Front-end Designer"], ["created_at", "2023-04-18 19:10:34.578857"], ["updated_at", "2023-04-18 19:10:34.578857"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mApplication Create (1.4ms)[0m  [1m[32mINSERT INTO "applications" ("opportunity_id", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["opportunity_id", 1], ["profile_id", 1], ["created_at", "2023-04-18 19:10:34.637436"], ["updated_at", "2023-04-18 19:10:34.637436"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mApplication Create (0.8ms)[0m  [1m[32mINSERT INTO "applications" ("opportunity_id", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["opportunity_id", 2], ["profile_id", 1], ["created_at", "2023-04-18 19:10:34.655210"], ["updated_at", "2023-04-18 19:10:34.655210"]]
+  [1m[36mTRANSACTION (12.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mApplication Create (0.8ms)[0m  [1m[32mINSERT INTO "applications" ("opportunity_id", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["opportunity_id", 1], ["profile_id", 1], ["created_at", "2023-04-18 19:10:34.677491"], ["updated_at", "2023-04-18 19:10:34.677491"]]
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mApplication Create (0.9ms)[0m  [1m[32mINSERT INTO "applications" ("opportunity_id", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["opportunity_id", 3], ["profile_id", 2], ["created_at", "2023-04-18 19:10:34.699765"], ["updated_at", "2023-04-18 19:10:34.699765"]]
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mApplication Create (0.8ms)[0m  [1m[32mINSERT INTO "applications" ("opportunity_id", "profile_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["opportunity_id", 4], ["profile_id", 2], ["created_at", "2023-04-18 19:10:34.721919"], ["updated_at", "2023-04-18 19:10:34.721919"]]
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (1.5ms)[0m  [1m[32mINSERT INTO "tags" ("name", "slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "ICT"], ["slug", "ict"], ["created_at", "2023-04-18 19:10:34.797585"], ["updated_at", "2023-04-18 19:10:34.797585"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (0.8ms)[0m  [1m[32mINSERT INTO "tags" ("name", "slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Healthcare"], ["slug", "healthcare"], ["created_at", "2023-04-18 19:10:34.824045"], ["updated_at", "2023-04-18 19:10:34.824045"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (0.9ms)[0m  [1m[32mINSERT INTO "tags" ("name", "slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Design"], ["slug", "design"], ["created_at", "2023-04-18 19:10:34.845959"], ["updated_at", "2023-04-18 19:10:34.845959"]]
+  [1m[36mTRANSACTION (12.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (0.8ms)[0m  [1m[32mINSERT INTO "tags" ("name", "slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Education"], ["slug", "education"], ["created_at", "2023-04-18 19:10:34.880785"], ["updated_at", "2023-04-18 19:10:34.880785"]]
+  [1m[36mTRANSACTION (11.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTag Create (0.7ms)[0m  [1m[32mINSERT INTO "tags" ("name", "slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Engineering"], ["slug", "engineering"], ["created_at", "2023-04-18 19:10:34.912481"], ["updated_at", "2023-04-18 19:10:34.912481"]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOpportunityTag Create (1.4ms)[0m  [1m[32mINSERT INTO "opportunity_tags" ("opportunity_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["opportunity_id", 3], ["tag_id", 1], ["created_at", "2023-04-18 19:10:35.003511"], ["updated_at", "2023-04-18 19:10:35.003511"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOpportunityTag Create (0.8ms)[0m  [1m[32mINSERT INTO "opportunity_tags" ("opportunity_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["opportunity_id", 2], ["tag_id", 2], ["created_at", "2023-04-18 19:10:35.022382"], ["updated_at", "2023-04-18 19:10:35.022382"]]
+  [1m[36mTRANSACTION (9.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOpportunityTag Create (0.8ms)[0m  [1m[32mINSERT INTO "opportunity_tags" ("opportunity_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["opportunity_id", 1], ["tag_id", 3], ["created_at", "2023-04-18 19:10:35.043468"], ["updated_at", "2023-04-18 19:10:35.043468"]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOpportunityTag Create (0.5ms)[0m  [1m[32mINSERT INTO "opportunity_tags" ("opportunity_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["opportunity_id", 2], ["tag_id", 4], ["created_at", "2023-04-18 19:10:35.097890"], ["updated_at", "2023-04-18 19:10:35.097890"]]
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOpportunityTag Create (0.6ms)[0m  [1m[32mINSERT INTO "opportunity_tags" ("opportunity_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["opportunity_id", 4], ["tag_id", 5], ["created_at", "2023-04-18 19:10:35.109547"], ["updated_at", "2023-04-18 19:10:35.109547"]]
+  [1m[36mTRANSACTION (14.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfileTag Create (1.4ms)[0m  [1m[32mINSERT INTO "profile_tags" ("profile_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["profile_id", 2], ["tag_id", 1], ["created_at", "2023-04-18 19:10:35.146696"], ["updated_at", "2023-04-18 19:10:35.146696"]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfileTag Create (0.8ms)[0m  [1m[32mINSERT INTO "profile_tags" ("profile_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["profile_id", 1], ["tag_id", 1], ["created_at", "2023-04-18 19:10:35.165554"], ["updated_at", "2023-04-18 19:10:35.165554"]]
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfileTag Create (0.7ms)[0m  [1m[32mINSERT INTO "profile_tags" ("profile_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["profile_id", 2], ["tag_id", 3], ["created_at", "2023-04-18 19:10:35.187955"], ["updated_at", "2023-04-18 19:10:35.187955"]]
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfileTag Create (0.7ms)[0m  [1m[32mINSERT INTO "profile_tags" ("profile_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["profile_id", 1], ["tag_id", 5], ["created_at", "2023-04-18 19:10:35.210170"], ["updated_at", "2023-04-18 19:10:35.210170"]]
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfileTag Create (0.7ms)[0m  [1m[32mINSERT INTO "profile_tags" ("profile_id", "tag_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["profile_id", 2], ["tag_id", 2], ["created_at", "2023-04-18 19:10:35.232318"], ["updated_at", "2023-04-18 19:10:35.232318"]]
+  [1m[36mTRANSACTION (12.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mOpportunity Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "opportunities"[0m
+Started GET "/" for ::1 at 2023-04-18 22:13:16 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ella/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ella/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.0ms | Allocations: 660)
+Completed 200 OK in 13ms (Views: 4.6ms | ActiveRecord: 0.0ms | Allocations: 5545)
+
+
+Started GET "/opportunities" for ::1 at 2023-04-18 22:13:29 +0300
+Processing by OpportunitiesController#index as HTML
+  [1m[36mOpportunity Load (0.6ms)[0m  [1m[34mSELECT "opportunities".* FROM "opportunities"[0m
+  ↳ app/controllers/opportunities_controller.rb:3:in `index'
+Completed 200 OK in 53ms (Views: 40.5ms | ActiveRecord: 8.3ms | Allocations: 21309)
+
+

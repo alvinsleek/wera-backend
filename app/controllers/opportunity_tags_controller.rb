@@ -1,0 +1,2 @@
+class OpportunityTagsController < ApplicationController
+end
