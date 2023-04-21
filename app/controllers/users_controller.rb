@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     def create
         user = User.create!(user_params)
         if user
-            if (params[:user_type]=="employer")
+            if (params[:user_type]=="Employer")
             employer= Employer.create!(user_id:user.id, full_name:params[:full_name],email_address:params[:email_address] )
             render json: employer
             else

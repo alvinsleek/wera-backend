@@ -19,13 +19,15 @@ class SessionsController < ApplicationController
                 else
                     render json: {errors:["Employer does not exist under this email"]}, status: :not_found
                 end
-            else
+            elsif((params[:user_type]=="Jobseeker"))
                 profile= Profile.find_by(user_id:user.id)
                 if profile
                      render json: profile
                 else
                     render json: {errors:["A job seeker does not exist under this email"]}, status: :not_found
                 end
+            else
+                render json: {errors:["You have not selected"]}, status: :not_found
             end
         else
         render json: {errors:["Wrong email address or password"]}, status: :unprocessable_entity #422
