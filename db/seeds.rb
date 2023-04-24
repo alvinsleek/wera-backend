@@ -1,4 +1,13 @@
-
+User.destroy_all
+Profile.destroy_all
+Opportunity.destroy_all
+ProfileTag.destroy_all
+Tags.destroy_all
+OpportunityTag.destroy_all
+Employer.destroy_all
+Application.destroy_all
+Education.destroy_all
+Experience.destroy_all
 
 puts "Starts seeding"
 # USER
