@@ -2,7 +2,7 @@ User.destroy_all
 Profile.destroy_all
 Opportunity.destroy_all
 ProfileTag.destroy_all
-Tags.destroy_all
+Tag.destroy_all
 OpportunityTag.destroy_all
 Employer.destroy_all
 Application.destroy_all
