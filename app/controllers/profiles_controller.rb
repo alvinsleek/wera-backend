@@ -6,12 +6,20 @@ class ProfilesController < ApplicationController
   def index 
     render json: Profile.all
   end
+  # /profile_summaries
+  def summary
+    render json: Profile.all, each_serializer: ProfileSummarySerializer
+  end
   # GET profiles/:id
   def show
     profile= Profile.find(params[:id])
     # opportunities= profile.opportunities
-    render json: profile, include: ['tags','tags.opportunities', 'applications','applications.opportunity']
+    render json: profile, include: ['tags','tags.opportunities', 'tags.opportunities.employer','applications','applications.opportunity']
     #  ['tags','tags.opportunities']
+  end
+  def profile_opp
+    profile= Profile.find(params[:id])
+    render json: profile, method: :profile_opportunities
   end
   def update
     profile=Profile.find(params[:id])

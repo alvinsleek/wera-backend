@@ -5,4 +5,5 @@ class Profile < ApplicationRecord
   has_many :profile_tags
   has_many :tags, through: :profile_tags
   belongs_to :user
+  has_many :opportunities, through: :tags
 end
