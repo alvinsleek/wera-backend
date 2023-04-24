@@ -19,6 +19,11 @@ class EmployersController < ApplicationController
     render json: employer
   end
 
+  def employer_opportunities
+    jobs = Opportunity.where(employer_id: params[:employer_id])
+    render json: jobs, status: :ok
+  end
+
   private
 
   def employer_params
