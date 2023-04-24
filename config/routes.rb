@@ -11,5 +11,7 @@ resources :profiles, only: [:show] do
   resources :applications, only: [:index,:create]
 
   post "/login", to: "sessions#create"
-  post "/signup", to: "users#create"
+  post "/signup", to: "users#create"  
+  get '/all_summaries', to: 'sessions#summaries'
+
 end

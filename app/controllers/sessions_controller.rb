@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
     skip_before_action :verify_authenticity_token
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_user_credentials
     rescue_from ActiveRecord::RecordNotFound, with: :user_not_found
+    def summaries
+        render json: {opportunities:Opportunity.all.count, profiles:Profile.all.count, applications:Application.all.count, employers:Employer.all.count}
+    end
     #login
     def create
         user= User.find_by(email_address:params[:email_address])

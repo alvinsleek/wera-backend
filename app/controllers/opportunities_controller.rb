@@ -13,8 +13,8 @@ class OpportunitiesController < ApplicationController
     render json: opp
   end
   def create
-    employer= Employer.find(params[:employer_id])
-    opportunity=employer.opportunity.create!(opportunity_params)
+    # employer= Employer.find(params[:employer_id])
+    opportunity=Opportunity.create!(opportunity_params)
     render json: opportunity
   end
 
