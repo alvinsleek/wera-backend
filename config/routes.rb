@@ -11,6 +11,7 @@ resources :profiles, only: [:show] do
   resources :applications, only: [:index,:create]
 
   # find employer specific job posts
+  
   get "/jobs/employer/:employer_id", to: "employers#employer_opportunities"
 
   post "/login", to: "sessions#create"
