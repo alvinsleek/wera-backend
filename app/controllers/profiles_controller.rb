@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
   def show
     profile= Profile.find(params[:id])
     # opportunities= profile.opportunities
-    render json: profile, include: ['tags','tags.opportunities', 'tags.opportunities.employer','applications','applications.opportunity']
+    render json: profile, include: ['tags','tags.opportunities', 'tags.opportunities.employer','applications','applications.opportunity', "educations","experiences"]
     #  ['tags','tags.opportunities']
   end
   def profile_opp
