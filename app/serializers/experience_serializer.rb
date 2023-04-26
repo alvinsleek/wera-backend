@@ -1,4 +1,4 @@
 class ExperienceSerializer < ActiveModel::Serializer
-  attributes :year, :company, :job_description
-  belongs_to :profile
+  attributes :id, :year, :company, :job_description
+  
 end
