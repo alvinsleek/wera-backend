@@ -6,6 +6,11 @@ class ApplicationsController < ApplicationController
     def index
       render json: Application.all
     end
+    # GET applications/:id
+  def show
+    application= Application.find(params[:id])
+    render json: application
+  end
     # POST /applications
    def create
     application=Application.create!(application_params)
