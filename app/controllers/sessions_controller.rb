@@ -9,20 +9,7 @@ class SessionsController < ApplicationController
     def create
         user= User.find_by(email_address:params[:email_address])
         if user&.authenticate(params[:password])
-            if(params[:user_type]=="Admin")
-                admin= User.find_by(id:user.id)
-                if(admin.is_admin==true)
-                    render json: admin
-                end
-
-            elsif (params[:user_type]=="Employer")
-                employer= Employer.find_by(user_id:user.id)
-                if employer
-                    render json: employer
-                else
-                    render json: {errors:["Employer does not exist under this email"]}, status: :not_found
-                end
-            elsif((params[:user_type]=="Jobseeker"))
+            if((params[:user_type]=="jobseeker"))
                 profile= Profile.find_by(user_id:user.id)
                 if profile
                      render json: profile
@@ -30,10 +17,20 @@ class SessionsController < ApplicationController
                     render json: {errors:["A job seeker does not exist under this email"]}, status: :not_found
                 end
             else
-                render json: {errors:["You have not selected"]}, status: :not_found
+                if(user.is_admin==true)
+                    render json: user
+                else
+                    employer= Employer.find_by(user_id:user.id)
+                    if employer
+                        render json: employer
+                    else
+                        render json: {errors:["Employer does not exist under this email"]}, status: :not_found
+                    end
+                end
             end
+
         else
-        render json: {errors:["Wrong email address or password"]}, status: :unprocessable_entity #422
+            render json: {errors:["Wrong email address or password"]}, status: :unprocessable_entity #422
         end
     end
 

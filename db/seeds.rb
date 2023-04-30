@@ -11,17 +11,17 @@
 
 puts "Starts seeding"
 # USER
-user1 = User.create!(email_address:'werabosses@ymail.com', password:'98765', password_confirmation:'98765', user_type:'Admin',
+user1 = User.create!(email_address:'werabosses@ymail.com', password:'98765', password_confirmation:'98765', user_type:'admin',
 is_admin:true)
-user2 = User.create!(email_address:'ndungujeffy@yahoo.com', password:'abc123', password_confirmation:'abc123', user_type:'Jobseeker',
+user2 = User.create!(email_address:'ndungujeffy@yahoo.com', password:'abc123', password_confirmation:'abc123', user_type:'jobseeker',
 is_admin:false)
-user3 = User.create!(email_address:'citizenlive2@yahoo.com', password:'456bcd', password_confirmation:'456bcd', user_type:'Jobseeker',
+user3 = User.create!(email_address:'citizenlive2@yahoo.com', password:'456bcd', password_confirmation:'456bcd', user_type:'jobseeker',
 is_admin:false)
-user4 = User.create!(email_address:'ntvkenyas@gmail.com', password:'789efg',password_confirmation:'789efg',  user_type:'Employer',
+user4 = User.create!(email_address:'ntvkenyas@gmail.com', password:'789efg',password_confirmation:'789efg',  user_type:'employer',
 is_admin:false)
-user5 = User.create!(email_address:'ktnnewss@yahoo.com', password:'256jef', password_confirmation:'256jef', user_type:'Employer',
+user5 = User.create!(email_address:'ktnnewss@yahoo.com', password:'256jef', password_confirmation:'256jef', user_type:'employer',
 is_admin:false)
-user5 = User.create!(email_address:'ktnnewskenya@yahoo.com', password:'256jef', password_confirmation:'256jef', user_type:'Employer',
+user5 = User.create!(email_address:'ktnnewskenya@yahoo.com', password:'256jef', password_confirmation:'256jef', user_type:'employer',
 is_admin:false)
 
 # Employer
