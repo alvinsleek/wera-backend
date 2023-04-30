@@ -8,7 +8,7 @@ resources :profiles, only: [:show] do
   resources :employers, only: [:index, :update, :show, :destroy]
   resources :opportunities, only: [:show, :create, :index]
   resources :tags, only: [:create]
-  resources :applications, only: [:index,:create]
+  resources :applications, only: [:index,:create, :show]
 
   post "/login", to: "sessions#create"
   post "/signup", to: "users#create"  
